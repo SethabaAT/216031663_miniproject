@@ -111,7 +111,7 @@ public class ElectionHandler implements Runnable {
 							System.out.println("Not authenticated");
 						}
 						break;
-					case REGISTER:
+					case VALIDATE:
 						if (isLoggedIn) {
 							String voter = st.nextToken();
 							String candidate = st.nextToken();
@@ -132,7 +132,9 @@ public class ElectionHandler implements Runnable {
 							blockchain.addBlock(transactions);
 
 							// Remove vote from votes list
-							votes.remove(candidate + " " + voter);
+							System.out.println("Before " + votes);
+							votes.remove(voter + " " + candidate);
+							System.out.println("After " + votes);
 
 							sendMessage("200 Vote Validated");
 						} else {
@@ -181,8 +183,6 @@ public class ElectionHandler implements Runnable {
 						}
 						break;
 					case INVALID:
-						// Handle invalid command
-						// invalid command
 						break;
 				}
 			}
@@ -264,7 +264,14 @@ public class ElectionHandler implements Runnable {
 		return user;
 	}
 
-	// Method to count occurrences of a specific sender in the blockchain string
+	/**
+	 * Counts the number of occurrences of a specified sender in a blockchain
+	 * string.
+	 * 
+	 * @param blockchainString The blockchain string to search.
+	 * @param sender           The sender to search for.
+	 * @return The number of occurrences of the specified sender.
+	 */
 	public static int countSenderOccurrences(String blockchainString, String sender) {
 		// Define regex pattern to match the specified data (candidate) field
 		String patternString = sender;

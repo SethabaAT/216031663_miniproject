@@ -4,11 +4,12 @@ import java.io.*;
 import java.net.Socket;
 
 /**
- * The NetworkManager class manages the network connection with the server.
+ * The ClientConnection class manages the network connection with the server.
  * 
  * @author Arnold Thabo Sethaba
  */
 public class ClientConnection {
+    // Attributes
     private Socket clientSocket;
     private BufferedReader bufferedReader;
     private PrintWriter printWriter;
@@ -28,7 +29,8 @@ public class ClientConnection {
             inputStreamReader = new InputStreamReader(inputStream);
             bufferedReader = new BufferedReader(inputStreamReader);
             printWriter = new PrintWriter(outputStream);
-            System.out.println("Client connected to server and streams created");
+
+            System.out.println("Client connected to server");
         } catch (IOException e) {
             e.printStackTrace();
         }
