@@ -10,7 +10,7 @@ public enum Command {
     LOGIN,
     VOTE,
     RESULTS,
-    REGISTER,
+    VALIDATE,
     LOGOUT,
     VOTE_LIST,
     INVALID;
